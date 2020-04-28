@@ -1,5 +1,74 @@
-$primary-color: #444;
+@import "config";
+
+* {
+  box-sizing: border-box;
+}
+//* - everything set in a box
 body {
+  @include background();
   background: $primary-color;
   color: #fff;
+  height: 100%;
+  margin: 0; //margin disapears
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.5; //space beethwen the lines
+}
+
+//Headings
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-weight: 400; //to make it thinner or thick
+
+  &.lg-heading {
+    font-size: 6rem; //6*html px
+  } //for the h1 large heading class
+  &.sm-heading {
+    margin-bottom: 2rem;
+    padding: 0.2rem 1rem;
+    background: rgba(
+      lighten($primary-color, 2),
+      0.5
+    ); //lighen our primary colour,0.5 is the opacity
+  }
+  //for the small heading class
+}
+
+a {
+  color: #fff;
+  text-decoration: none; //without underline
+}
+
+header {
+  position: fixed; //always stays on the top(the menu)
+  z-index: 2; //how close is it to you, the biiger the nr the closer
+  width: 100%; //streches the whole screen
+}
+.text-secondary {
+  color: $secondary-color;
+}
+
+main {
+  padding: 4rem; //for rem around everything
+  height: 100%;
+
+  .icons {
+    //we do nesting so it only affects the class icons inside the main
+    margin-top: 1rem;
+
+    a {
+      padding: 1rem; //space beethweb the icons
+      &:hover {
+        //the colour when we put the mouse over
+        color: $secondary-color;
+        @include easeOut();
+      }
+    }
+  }
+  &#home {
+    //affect any main that has the home id(#)
+    overflow: hidden; //whitout scroll bar
+    margin-top: 20vh; //move down, vh a unit, like slicing in 20 horizontal slices
+  }
 }
