@@ -4,76 +4,76 @@
 * {
   box-sizing: border-box;
 }
-//* - everything set in a box
+
 body {
-  @include background();
+  @include background;
   background: $primary-color;
   color: set-text-color($primary-color);
   height: 100%;
-  margin: 0; //margin disapears
+  margin: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.5; //space beethwen the lines
+  line-height: 1.5;
 }
 
-//Headings
+// Headings
 h1,
 h2,
 h3 {
   margin: 0;
-  font-weight: 400; //to make it thinner or thick
+  font-weight: 400;
 
   &.lg-heading {
-    font-size: 6rem; //6*html px
-  } //for the h1 large heading class
+    font-size: 6rem;
+  }
+
   &.sm-heading {
     margin-bottom: 2rem;
     padding: 0.2rem 1rem;
-    background: rgba(
-      lighten($primary-color, 2),
-      0.5
-    ); //lighen our primary colour,0.5 is the opacity
+    background: rgba(lighten($primary-color, 2), 0.5);
   }
-  //for the small heading class
 }
 
 a {
   color: #fff;
-  text-decoration: none; //without underline
+  text-decoration: none;
 }
 
 header {
-  position: fixed; //always stays on the top(the menu)
-  z-index: 2; //how close is it to you, the biiger the nr the closer
-  width: 100%; //streches the whole screen
+  position: fixed;
+  z-index: 2;
+  width: 100%;
 }
+
 .text-secondary {
   color: $secondary-color;
 }
 
 main {
-  padding: 4rem; //for rem around everything
-  //height: 100%;
-  min-height: calc(100vh-60px);
+  padding: 4rem;
+  // height: 100%;
+  min-height: calc(100vh - 60px);
 
   .icons {
-    //we do nesting so it only affects the class icons inside the main
     margin-top: 1rem;
 
     a {
-      padding: 1rem; //space beethweb the icons
+      padding: 0.4rem;
+      @include easeOut;
+
       &:hover {
-        //the colour when we put the mouse over
         color: $secondary-color;
-        @include easeOut();
       }
     }
   }
+
   &#home {
-    //affect any main that has the home id(#)
-    overflow: hidden; //whitout scroll bar
-    margin-top: 20vh; //move down, vh a unit, like slicing in 20 horizontal slices
+    overflow: hidden;
+    h1 {
+      margin-top: 20vh;
+    }
   }
 }
+
 .about-info {
   display: grid;
   grid-gap: 30px;
@@ -81,36 +81,106 @@ main {
     "bioimage bio bio"
     "job1 job2 job3";
   grid-template-columns: repeat(3, 1fr);
-}
-.bio-image {
-  grid-area: bioimage;
-  margin: auto;
-  border-radius: 50%;
-  border: $secondary-color 3px solid;
+
+  .bio-image {
+    grid-area: bioimage;
+    margin: auto;
+    border-radius: 50%;
+    border: $secondary-color 3px solid;
+  }
+
+  .bio {
+    grid-area: bio;
+    font-size: 1.5rem;
+  }
+
+  .job-1 {
+    grid-area: job1;
+  }
+
+  .job-2 {
+    grid-area: job2;
+  }
+
+  .job-3 {
+    grid-area: job3;
+  }
+
+  .job {
+    background: lighten($primary-color, 5);
+    padding: 0.5rem;
+    border-bottom: $secondary-color 5px solid;
+  }
 }
 
-.bio {
-  grid-area: bio;
-  font-size: 1.5rem;
+// Work/Projects
+.projects {
+  display: grid;
+  grid-gap: 0.7rem;
+  grid-template-columns: repeat(3, 1fr);
+
+  img {
+    width: 100%;
+    border: 3px #fff solid;
+
+    &:hover {
+      opacity: 0.5;
+      border-color: $secondary-color;
+      @include easeOut;
+    }
+  }
 }
 
-.job-1 {
-  grid-area: job1;
+// Contact Page
+.boxes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 1rem;
+
+  div {
+    font-size: 2rem;
+    border: 3px #fff solid;
+    padding: 1.5rem 2.5rem;
+    margin-bottom: 3rem;
+    @include easeOut;
+
+    &:hover {
+      padding: 0.5rem 1.5rem;
+      background: $secondary-color;
+      color: set-text-color($secondary-color);
+      span {
+        color: set-text-color($secondary-color);
+      }
+    }
+  }
 }
 
-.job-2 {
-  grid-area: job2;
+// Button Styles
+.btn {
+  display: block;
+  padding: 0.5rem 1rem;
+  border: 0;
+  margin-bottom: 0.3rem;
+  &:hover {
+    background: $secondary-color;
+    color: set-text-color($secondary-color);
+  }
 }
 
-.job-3 {
-  grid-area: job3;
+.btn-dark {
+  @extend .btn;
+  background: darken($primary-color, 50);
+  color: #fff;
 }
 
-.job {
-  background: lighten($primary-color, 5);
-  padding: 0.5rem;
-  border-bottom: $secondary-color 5px solid;
+.btn-light {
+  @extend .btn;
+  background: lighten($primary-color, 50);
+  color: #333;
 }
+
 #main-footer {
   text-align: center;
   padding: 1rem;
@@ -118,4 +188,5 @@ main {
   color: set-text-color($primary-color);
   height: 60px;
 }
+
 @import "mobile";
