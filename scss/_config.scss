@@ -1,10 +1,9 @@
-$primary-color: #444;
-$secondary-color: #eece1a;
+$primary-color: #22223a;
+$secondary-color: #d56c2c;
 $show-home-image: true;
 $home-image: url(../img/background.jpg);
 $background-opacity: 0.8;
 @mixin easeOut {
-  //like a function
   transition: all 0.7s ease-out; //the color will apear smoothly in 0.7sec
 }
 @mixin background {
@@ -15,7 +14,6 @@ $background-opacity: 0.8;
       background-size: cover;
 
       &:after {
-        //not in html but treats it like is in html after the bg-img
         content: "";
         position: absolute;
         top: 0;

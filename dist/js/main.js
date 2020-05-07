@@ -1,12 +1,12 @@
 //select DOM Items
 const menuBtn = document.querySelector(".menu-btn");
-//selects whatewer we pu here
+//selects what we put here
 const menuNav = document.querySelector(".menu-nav");
 const menu = document.querySelector(".menu");
 const menuBranding = document.querySelector(".menu-brending");
 const navItems = document.querySelectorAll(".nav-item");
 
-//set initial sate of menu
+//set initial state of menu
 let showMenu = false;
 
 menuBtn.addEventListener("click", toggleMenu);
